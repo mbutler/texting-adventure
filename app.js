@@ -1,5 +1,6 @@
 const moment = require('moment')
 const parser = require('./parser')
+const sendMessage = require('./sender')
 const express = require('express')
 const MongoClient = require('mongodb').MongoClient
 const app = express()
@@ -28,7 +29,9 @@ app.get('/', (req, res) => {
          keyword: req.query.keyword
      }
 
-     parser(messageObj)
+     let sendText = parser(messageObj)
+
+     sendMessage(sendText, '13199361339')
 
      insertDocument('rooms', messageObj)
      res.sendStatus(200)
