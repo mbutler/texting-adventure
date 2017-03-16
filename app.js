@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 
      let sendText = parser(messageObj)
 
-     sendMessage(sendText, '13199361339')
+     sendMessage(sendText, '')
 
      insertDocument('rooms', messageObj)
      res.sendStatus(200)
